@@ -1,0 +1,36 @@
+version: '2'
+services:
+  version: '2'
+services:
+  api:
+    image: iblups:1.0
+    build:
+      context: .
+      dockerfile: ./iblups/docker/Dockerfile
+    command: bash -c "python manage.py runserver 0.0.0.0:8181"
+    tty: true
+    stdin_open: true
+    volumes:
+      - ./iblups:/usr/src/app
+    environment:
+      PYTHONPATH: /usr/src/app/vendor
+      PYTHONUSERBASE: /usr/src/app/vendor
+      PIP_TARGET: /usr/src/app/vendor
+    ports:
+      - "8181:8181"
+    env_file:
+      - .env
+  db:
+    image: mtirsel/mysql-5.1
+    ports:
+      - "3306:3306"
+    volumes_from:
+      - data
+    environment:
+      - MYSQL_USER=iblups
+      - MYSQL_ROOT_PASSWORD=iblups
+      - MYSQL_DATABASE=iblups
+  data:
+    image: busybox
+    volumes:
+      - /var/lib/mysql
