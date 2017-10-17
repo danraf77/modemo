@@ -7,17 +7,17 @@
 
 ### Development Stage
 
-** RUN DEV DB**
+**RUN DEV DB**
 
 1. copy .env.example and rename to .env 
 2. configure the .env file
 2. docker-compose up db
 
-** RUN BACKEND **
+**RUN BACKEND **
 
 1. docker-compose up api 
 
-** TEST **
+**TEST**
 
 1. Open http://0.0.0.0:8181
 
