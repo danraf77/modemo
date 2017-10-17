@@ -13,7 +13,7 @@
 2. configure the .env file
 2. docker-compose up db
 
-**RUN BACKEND **
+**RUN BACKEND**
 
 1. docker-compose up api 
 
